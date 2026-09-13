@@ -2,7 +2,7 @@
 
 set -e
 
-REPO="https://raw.githubusercontent.com/YOUR_USERNAME/grim/main"
+REPO="https://raw.githubusercontent.com/Icy-Bear/Grim/main"
 
 echo
 echo "Installing GRIM..."
@@ -21,32 +21,46 @@ fi
 
 echo "✓ OpenCode found"
 
-# Installation directory
+# Installation directories
 INSTALL_DIR="$HOME/.grim"
+BIN_DIR="$HOME/.local/bin"
 
 mkdir -p "$INSTALL_DIR"
+mkdir -p "$BIN_DIR"
 
 echo "Downloading GRIM..."
 
-curl -fsSL "$REPO/grim.sh" > "$INSTALL_DIR/grim.sh"
+curl -fsSL "$REPO/linux/grim.sh" > "$INSTALL_DIR/grim.sh"
 curl -fsSL "$REPO/system-prompt.txt" > "$INSTALL_DIR/system-prompt.txt"
 
 chmod +x "$INSTALL_DIR/grim.sh"
 
-# Create executable
-mkdir -p "$HOME/.local/bin"
-
-cat > "$HOME/.local/bin/grim" <<EOF
+# Create executable wrapper
+cat > "$BIN_DIR/grim" <<EOF
 #!/usr/bin/env bash
 exec "$INSTALL_DIR/grim.sh" "\$@"
 EOF
 
-chmod +x "$HOME/.local/bin/grim"
+chmod +x "$BIN_DIR/grim"
 
 echo
 echo "✓ GRIM installed"
 echo
+
+# Warn if BIN_DIR not on PATH
+case ":$PATH:" in
+    *":$BIN_DIR:"*) ;;
+    *)
+        echo "NOTE: $BIN_DIR is not on your PATH."
+        echo "Add it with:"
+        echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+        echo
+        ;;
+esac
+
 echo "Run it with:"
 echo
 echo "    grim"
 echo
+
+exec "$BIN_DIR/grim"
