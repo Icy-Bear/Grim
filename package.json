@@ -1,0 +1,17 @@
+{
+  "name": "grim-vibe-assessment",
+  "version": "1.0.0",
+  "description": "GRIM — Vibe Coding Assessment simulator with a restricted AI assistant",
+  "type": "commonjs",
+  "bin": {
+    "grim": "./src/index.js"
+  },
+  "main": "./src/index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["assessment", "tui", "opencode", "cli"],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
