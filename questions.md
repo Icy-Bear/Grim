@@ -221,6 +221,65 @@ Explanation last case: valid orders include `[1,2,0,3]`, `[1,2,3,0]`, `[2,1,0,3]
 - Need `O((N+M) log N)` with min-heap Kahn's algorithm. Plain queue is not sufficient for lexicographically smallest.
 
 ---
+## Even or Odd
+
+Given an integer `N`, determine whether the number is **even** or **odd**.
+
+**Input Format**
+
+* The first line contains an integer `N`.
+* `0 <= N <= 10^9`
+
+**Output Format**
+
+Print:
+
+* `even` if `N` is divisible by 2.
+* `odd` otherwise.
+
+**Examples**
+
+```text
+Input:
+8
+
+Output:
+even
+```
+
+```text
+Input:
+7
+
+Output:
+odd
+```
+
+**Explanation**
+
+A number is **even** if it is completely divisible by `2`.
+
+For example:
+
+```text
+8 % 2 = 0
+```
+
+Therefore, `8` is even.
+
+```text
+7 % 2 = 1
+```
+
+Therefore, `7` is odd.
+
+**Constraints**
+
+* `0 <= N <= 10^9`
+* Time Complexity: `O(1)`
+* Extra Space: `O(1)`
+
+---
 
 ## Sliding Window Aggregator
 
@@ -304,64 +363,4 @@ Explanation: operations 2 and 4 are anomalies (read stale 0 and 1 respectively).
 
 - Must process in given order; do not reorder.
 - `O(N)` time, `O(1)` extra.
-
----
-## Even or Odd
-
-Given an integer `N`, determine whether the number is **even** or **odd**.
-
-**Input Format**
-
-* The first line contains an integer `N`.
-* `0 <= N <= 10^9`
-
-**Output Format**
-
-Print:
-
-* `even` if `N` is divisible by 2.
-* `odd` otherwise.
-
-**Examples**
-
-```text
-Input:
-8
-
-Output:
-even
-```
-
-```text
-Input:
-7
-
-Output:
-odd
-```
-
-**Explanation**
-
-A number is **even** if it is completely divisible by `2`.
-
-For example:
-
-```text
-8 % 2 = 0
-```
-
-Therefore, `8` is even.
-
-```text
-7 % 2 = 1
-```
-
-Therefore, `7` is odd.
-
-**Constraints**
-
-* `0 <= N <= 10^9`
-* Time Complexity: `O(1)`
-* Extra Space: `O(1)`
-
 
